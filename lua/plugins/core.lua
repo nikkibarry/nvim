@@ -99,4 +99,9 @@ return {
 			end, { desc = "Open harppoon window" })
 		end,
 	},
+	{
+		"Aasim-A/scrollEOF.nvim",
+		event = { "CursorMoved", "WinScrolled" },
+		opts = {},
+	},
 }

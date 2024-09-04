@@ -40,3 +40,5 @@ vim.opt.spell = true
 
 -- Set EOL
 vim.o.fixeol = true
+
+vim.o.scrolloff = 12
