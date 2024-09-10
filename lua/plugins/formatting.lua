@@ -35,7 +35,7 @@ return {
 					yaml = { "prettierd", "yamlfix" },
 				},
 				format_on_save = {
-					timeout_ms = 750,
+					timeout_ms = 1500,
 					lsp_format = "fallback",
 				},
 				formatters = {
