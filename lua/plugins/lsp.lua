@@ -116,7 +116,7 @@ return {
 					"lua_ls",
 					"marksman",
 					"taplo",
-					"tsserver",
+					"ts_ls",
 					"typos_lsp",
 					"yamlls",
 				},

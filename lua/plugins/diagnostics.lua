@@ -38,4 +38,11 @@ return {
 		event = "VeryLazy",
 		config = true,
 	},
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("tiny-inline-diagnostic").setup()
+		end,
+	},
 }
