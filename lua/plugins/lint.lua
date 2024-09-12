@@ -6,6 +6,8 @@ return {
 			local lint = require("lint")
 			lint.linters_by_ft = {
 				["*"] = { "cspell" },
+				c = { "cpplint" },
+				cpp = { "cpplint" },
 				dockerfile = { "hadolint" },
 				htmldjango = { "djlint" },
 				javascript = { "eslint_d" },
@@ -63,10 +65,11 @@ return {
 			require("mason-nvim-lint").setup({
 				ensure_installed = {
 					"cspell",
+					"cpplint",
+					"djlint",
 					"eslint_d",
 					"flake8",
 					"hadolint",
-					"djlint",
 					"jsonlint",
 					"markdownlint",
 					"mypy",

@@ -56,6 +56,7 @@ return {
 					"vim",
 					"xml",
 					"yaml",
+					"zig",
 				},
 				textobjects = {
 					select = {

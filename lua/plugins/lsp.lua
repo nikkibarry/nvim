@@ -119,6 +119,7 @@ return {
 					"ts_ls",
 					"typos_lsp",
 					"yamlls",
+					"zls",
 				},
 				handlers = {
 					function(server_name)
@@ -177,6 +178,9 @@ return {
 					end,
 				},
 			})
+			-- Currently, clangd cannot be installed by mason for arm64
+			-- Manually install clangd and load
+			lspconfig.clangd.setup({})
 		end,
 	},
 	{

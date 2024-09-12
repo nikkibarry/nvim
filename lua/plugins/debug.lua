@@ -60,8 +60,9 @@ return {
 		config = function()
 			require("mason-nvim-dap").setup({
 				ensure_installed = {
-					"python",
+					"codelldb",
 					"delve",
+					"python",
 				},
 				automatic_installation = {
 					exclude = {
@@ -123,6 +124,8 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/neotest-go",
+			"lawrence-laz/neotest-zig",
+			"alfaix/neotest-gtest",
 		},
 		config = function()
 			require("neotest").setup({
@@ -132,6 +135,12 @@ return {
 						pytest_discover_instances = true,
 					}),
 					require("neotest-go"),
+					require("neotest-zig")({
+						dap = {
+							adapter = "lldb",
+						},
+					}),
+					require("neotest-gtest").setup({}),
 				},
 			})
 		end,
