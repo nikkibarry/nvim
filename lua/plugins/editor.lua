@@ -119,6 +119,13 @@ return {
 				update_n_lines = "<leader>wn",
 			},
 		},
+		keys = {
+			{
+				"<leader>w",
+				"",
+				desc = "Surround",
+			},
+		},
 	},
 	{
 		"johmsalas/text-case.nvim",
@@ -174,10 +181,36 @@ return {
 		},
 		keys = {
 			{
-				"<leader>ta",
+				"<leader>a",
 				"<cmd>AerialNavToggle<cr>",
 				desc = "Toggle Aerial",
 			},
+		},
+	},
+	{
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	},
+	{
+		"OXY2DEV/helpview.nvim",
+		ft = "help",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	{
+		"OXY2DEV/markview.nvim",
+		ft = "markdown",
+
+		dependencies = {
+			-- You will not need this if you installed the
+			-- parsers manually
+			-- Or if the parsers are in your $RUNTIMEPATH
+			"nvim-treesitter/nvim-treesitter",
+
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 }

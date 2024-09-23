@@ -1,19 +1,23 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
+		event = { "BufNewFile", "BufReadPre" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
 			local treesitter = require("nvim-treesitter.configs")
 			treesitter.setup({
+				auto_install = true,
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
+					disable = {
+						"neo-tree",
+						"notify",
+					},
 				},
-				indent = { enable = true },
 				ensure_installed = {
 					"bash",
 					"c",
@@ -54,6 +58,7 @@ return {
 					"tsx",
 					"typescript",
 					"vim",
+					"vimdoc",
 					"xml",
 					"yaml",
 					"zig",
@@ -151,10 +156,10 @@ return {
 					swap = {
 						enable = true,
 						swap_next = {
-							["<leader>xs"] = "@parameter.inner",
+							["<leader>ss"] = "@parameter.inner",
 						},
 						swap_previous = {
-							["<leader>xS"] = "@parameter.inner",
+							["<leader>sS"] = "@parameter.inner",
 						},
 					},
 					lsp_interop = {
@@ -167,10 +172,17 @@ return {
 				},
 			})
 		end,
+		keys = {
+			{
+				"<leader>s",
+				"",
+				desc = "Swap",
+			},
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufNewFile", "BufReadPre" },
 		config = function()
 			require("treesitter-context").setup({
 				enable = true,
@@ -188,6 +200,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = { "BufNewFile", "BufReadPre" },
 		config = function()
 			require("nvim-ts-autotag").setup({
 				opts = {

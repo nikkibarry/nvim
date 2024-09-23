@@ -30,14 +30,13 @@ return {
 		keys = {
 			{
 				"<leader>d",
+				"",
 				desc = "Debugging",
 			},
 			{
-				"<leader>db",
-				function()
-					require("dap").toggle_breakpoint()
-				end,
-				desc = "Toggle Breakpoint",
+				"<leader>dr",
+				"",
+				desc = "Run",
 			},
 			{
 				"<leader>du",
@@ -186,5 +185,23 @@ return {
 		config = function()
 			require("coverage").setup()
 		end,
+	},
+	{
+		"Weissle/persistent-breakpoints.nvim",
+		config = function()
+			require("persistent-breakpoints").setup({
+				load_breakpoints_event = { "BufReadPost" },
+				save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
+			})
+		end,
+		keys = {
+			{
+				"<leader>db",
+				function()
+					require("persistent-breakpoints.api").toggle_breakpoint()
+				end,
+				desc = "Toggle Breakpoint",
+			},
+		},
 	},
 }

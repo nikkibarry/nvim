@@ -3,6 +3,11 @@ return {
 		"rcarriga/nvim-notify",
 		keys = {
 			{
+				"<leader>n",
+				"",
+				desc = "notifications",
+			},
+			{
 				"<leader>nu",
 				function()
 					require("notify").dismiss({ silent = true, pending = true })
@@ -29,7 +34,7 @@ return {
 		},
 		keys = {
 			{
-				"<C-f>",
+				"<c-f>",
 				"<cmd>Neotree toggle<cr>",
 				desc = "Toggle Neotree",
 			},
@@ -38,16 +43,13 @@ return {
 			use_popups_for_input = false,
 			sort_case_insensitive = true,
 			filesystem = {
-				filtered_tiems = {
+				filtered_items = {
 					visible = true,
 				},
-			},
-		},
-		window = {
-			mappings = {
-				["P"] = {
-					"toggle_preview",
-					config = { use_float = false, use_image_nvim = true },
+				window = {
+					mappings = {
+						["<c-f>"] = "close_window",
+					},
 				},
 			},
 		},

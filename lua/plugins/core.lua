@@ -98,6 +98,13 @@ return {
 				toggle_telescope(harpoon:list())
 			end, { desc = "Open harppoon window" })
 		end,
+		keys = {
+			{
+				"<leader>h",
+				"",
+				desc = "Harpoon",
+			},
+		},
 	},
 	{
 		"Aasim-A/scrollEOF.nvim",
