@@ -23,7 +23,10 @@ return {
 			local dapui = require("dapui")
 			dapui.setup()
 
-			dap.listeners.before.attach["dapui_config"] = function()
+			dap.listeners.before.attach.dapui_config = function()
+				dapui.open({})
+			end
+			dap.listeners.before.launch.dapui_config = function()
 				dapui.open({})
 			end
 		end,
@@ -46,9 +49,42 @@ return {
 				desc = "DAP UI",
 			},
 			{
+				"<leader>di",
+				function()
+					require("dapui").eval()
+				end,
+				desc = "inspect",
+			},
+			{
 				"<leader>dc",
 				"<cmd>DapContinue<cr>",
 				desc = "DAP continue",
+			},
+			{
+				"<F5>",
+				"<cmd>DapContinue<cr>",
+				desc = "Debug Continue",
+			},
+			{
+				"<F8>",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "Step Over",
+			},
+			{
+				"<F7>",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Step Into",
+			},
+			{
+				"<F9>",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "Step Out",
 			},
 		},
 	},
@@ -203,5 +239,19 @@ return {
 				desc = "Toggle Breakpoint",
 			},
 		},
+	},
+	{
+		"lucaSartore/nvim-dap-exception-breakpoints",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			local except_breakpoints =
+				require("nvim-dap-exception-breakpoints")
+			vim.api.nvim_set_keymap("n", "<leader>dc", "", {
+				desc = "Condition Breakpoints",
+				callback = except_breakpoints,
+			})
+		end,
 	},
 }
